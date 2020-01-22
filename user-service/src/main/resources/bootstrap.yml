@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: user-service
+
+server:
+  port: ${PORT:0}
+  servlet:
+    context-path: /user
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}-${random.int}
+    hostname: localhost

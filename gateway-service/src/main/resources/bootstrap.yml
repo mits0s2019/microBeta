@@ -1,0 +1,46 @@
+server:
+  port: 8090
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}-${random.int}
+    hostname: localhost
+
+
+zuul:
+  sensitiveHeaders:
+  ignoredServices: '*'
+  routes:
+    auth-service:
+      path: /auth/**
+      serviceId: auth-service
+      stripPrefix: false
+    user-service:
+      path: /user/**
+      serviceId: user-service
+      strip-prefix: false
+
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:9191/auth/oauth/check_token
+    client:
+      client-id: mobile
+      client-secret: pin
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
+spring:
+  application:
+    name: gateway-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/authDB?allowPublicKeyRetrieval=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: root
+    password: 1234
+

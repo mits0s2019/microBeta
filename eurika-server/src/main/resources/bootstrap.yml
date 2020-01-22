@@ -1,0 +1,19 @@
+#bootstrap.yml runs before application.properties
+spring:
+  application:
+    name: discovery-service
+#  cloud:
+#    config:
+#      uri: http://localhost:8888 #where the config-service is running
+#      fail-fast: true #the service will not run if it can't reach the config-service
+#      password: 1234 #password of the config-service
+#      username: user #username of the config-service
+
+eureka:
+  instance:
+    prefer-ip-address: true #when the application registers with eureka, it uses its IP address rather than its hostname
+  client:
+    registerWithEureka: false #tells the built-in eureka client to not register itself with eureka, because we should act as a server
+    fetchRegistry: false
+server:
+  port: 8761

@@ -1,0 +1,19 @@
+
+
+security:
+  oauth2:
+    client:
+      client-id: admin-ui
+      client-secret: pin
+      user-authorization-uri: http://localhost:8090/auth/oauth/authorize
+      access-token-uri: http://localhost:8090/auth/oauth/token
+    resource:
+      token-info-uri: http://localhost:8090/auth/oauth/check_token
+
+server:
+  servlet:
+    session:
+      cookie:
+        name: KSESSION
+
+
