@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 
 @Controller
 public class LogoutController {
@@ -28,4 +29,5 @@ public class LogoutController {
     public String login() {
         return "login";
     }
+
 }
