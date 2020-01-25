@@ -1,0 +1,35 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">-->
+    <link th:href="@{/css/login.css}"
+          rel="stylesheet" type="text/css" media="screen"/>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+    <title>Sign in</title>
+</head>
+
+<body>
+<div class="login ">
+    <h1>Login to Web App</h1>
+    <form method="post" th:action="@{/login}">
+        <p><input type="text" name="username" value="" placeholder="Username or Email"></p>
+        <p><input type="password" name="password" value="" placeholder="Password"></p>
+        <p class="remember_me">
+            <label>
+                <input type="checkbox" name="remember_me" id="remember_me">
+                Remember me on this computer
+            </label>
+        </p>
+        <p class="submit"><input type="submit" name="commit" value="Login"></p>
+    </form>
+</div>
+
+<div class="login-help">
+    <p>Forgot your password? <a href="#">Click here to reset it</a>.</p>
+</div>
+</body>
+
+</html>
