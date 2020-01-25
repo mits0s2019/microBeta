@@ -14,15 +14,13 @@ import java.security.Principal;
 @Controller
 public class WelcomeController {
 
-    @Autowired
-    PrincipalExtractor principalExtractor;
+
     @Autowired
     RestTemplate restTemplate;
 
     @RequestMapping(value = "/")
     public String loadUI(Principal principal){
-        System.out.println(principalExtractor.extractPrincipal());
-        System.out.println(AccessToken.getAccessToken());
+//        System.out.println(AccessToken.getAccessToken());
 
 
         return "index";

@@ -61,9 +61,9 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         }
 
         if (isUser) {
-            return "http://localhost:8080/MyMovies";
+            return "http://localhost:8080/MyMovies/login";
         } else if (isAdmin) {
-            return "http://localhost:8081/admin/";
+            return "http://localhost:8081/admin/login";
         } else {
             throw new IllegalStateException();
         }
