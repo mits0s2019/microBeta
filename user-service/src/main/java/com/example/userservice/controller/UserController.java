@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.net.URI;
+import java.security.Principal;
 
 //@RolesAllowed({"ROLE_admin"})
 @RestController
@@ -61,5 +62,11 @@ public class UserController {
     @DeleteMapping("user/{id}")
     void deleteEmployee(@PathVariable int id) {
         userService.deleteUserById(id);
+    }
+
+    @GetMapping(value = "/me",produces = "application/json" )
+    public Principal login(Principal principal) {
+
+        return principal;
     }
 }

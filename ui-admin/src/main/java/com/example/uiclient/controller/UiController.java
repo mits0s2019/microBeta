@@ -22,25 +22,20 @@ public class UiController  {
 @GetMapping("/user")
 @ResponseBody
 public String getPrinicap(Principal principal){
+
     return principal.getName();
 }
 
     @RequestMapping(value = "/admin")
     public String loadUIadmin(){
-        System.out.println(AccessToken.getAccessToken());
+
 
         return "administrator";
     }
     @RequestMapping(value = "/")
     public String loadUI(){
+
         return "index";
     }
 
-//    @RequestMapping(value = "/users",produces ={MediaType.APPLICATION_JSON_VALUE})
-//    public ResponseEntity getAllUsers(Model m) {
-//
-//        User[] users = restTemplate.getForObject("http://localhost:8080/user/users", User[].class);
-//    m.addAttribute("users",users);
-//        return new ResponseEntity(users,HttpStatus.OK);
-//    }
     }

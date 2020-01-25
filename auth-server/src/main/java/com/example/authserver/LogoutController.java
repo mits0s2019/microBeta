@@ -1,5 +1,10 @@
 package com.example.authserver;
 
+import com.example.authserver.model.AuthUserDetail;
+import com.example.authserver.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Optional;
 
 @Controller
 public class LogoutController {
+
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @RequestMapping("/exit")
     public void exit(HttpServletRequest request, HttpServletResponse response) {
@@ -29,5 +38,7 @@ public class LogoutController {
     public String login() {
         return "login";
     }
+
+
 
 }
