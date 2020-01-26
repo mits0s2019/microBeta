@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
     <title>MyMovies</title>
 </head>
 <body>
 <!--Nanbar-->
 <nav th:insert="navbar::#ftco-navbar"></nav>
 <!--Search Bar-->
-<div class="d-flex justify-content-center">
-    <div class="d-flex w-50">
-        <form id="search_bar" class="d-flex flex-row align-items-center w-100" >
+<div class="d-flex justify-content-center" id="search_bar">
+    <div class="d-flex w-50 h-100">
+        <form id="search_bar_form" class="d-flex flex-row align-items-center w-100" >
             <span class="glyphicon glyphicon-search mr-2" id="search_icon"></span>
-            <input type="text" class="w-100 border-0 " placeholder="Search for a movie, tv show...">
+            <input type="text" class="w-100 border-0 h-100" placeholder="Search for a movie, tv show...">
             <input type="submit" class="d-none" disabled>
         </form>
     </div>
