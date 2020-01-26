@@ -2,61 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
                 xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <title>MyMovies</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light animated zoomIn" id="ftco-navbar" style="animation-duration: 1.5s;">
-    <div class="container-fluid px-0 row">
-
-        <div class="col-xl-7 offset-xl-1 col-lg-8 d-flex align-items-center flex-wrap justify-content-between">
-            <img src="https://image.flaticon.com/icons/svg/201/201623.svg" style="width:40px;"/>
-            <a class="navbar-brand ml-2" href="${pageContext.request.contextPath}/">TripPlanner</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                    aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
-
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">Places</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
-<!--                    <div th:if="${#authentication.getPrincipal() =='anonymousUser'}">-->
-<!--                        <a href="${pageContext.request.contextPath}/login" class="btn  btn-sm px-3 btn-warning mr-2">Sign In</a>-->
-<!--                        <a href="${pageContext.request.contextPath}/register" class="btn btn-sm px-3 btn-warning">Sign Up</a>-->
-<!--                    </div>-->
-<!--                    <div th:if="${#authentication.getPrincipal()!='anonymousUser'}">-->
-<!--                            <span class="text-white mr-3"><strong class="font-weight-bold">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/user/profile"> <span th:text="${#authentication.getPrincipal()}"></span></a> </strong></span>-->
-<!--                            <a th:href="@{/logout}" class="btn btn-sm px-3 btn-warning">Log out</a>-->
-<!--                    </div>-->
-                </ul>
-            </div>
-        </div>
-        <div class="col-4 col-lg-4 text-lg-right d-none d-lg-block">
-    <div th:if="${#authentication.getPrincipal() =='anonymousUser'}">
-                <a th:href="@{/login}" class="btn  btn-sm px-3 btn-warning mr-2">Sign In</a>
-                <a th:href="@{/register}" class="btn btn-sm px-3 btn-warning">Sign Up</a>
+<!--Nanbar-->
+<nav th:insert="navbar::#ftco-navbar"></nav>
+<!--Search Bar-->
+<div class="d-flex justify-content-center">
+    <div class="d-flex w-50">
+        <form id="search_bar" class="d-flex flex-row align-items-center w-100" >
+            <span class="glyphicon glyphicon-search mr-2" id="search_icon"></span>
+            <input type="text" class="w-100 border-0 " placeholder="Search for a movie, tv show...">
+            <input type="submit" class="d-none" disabled>
+        </form>
     </div>
-            <div th:if="${#authentication.getPrincipal()!='anonymousUser'}">
-
-                <span class="text-white mr-3"><strong class="font-weight-bold">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/user/profile"> <span th:text="${#authentication.getPrincipal()}"></span></a> </strong></span>
-                 <a th:href="@{/logout}" class="btn btn-sm px-3 btn-warning">Log out</a>
-
-        </div>
-
-    </div>
-</nav>
-
+</div>
 <h1>Hello, world!</h1>
+
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
