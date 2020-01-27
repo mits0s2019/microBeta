@@ -10,3 +10,22 @@ li{
 #ftco-nav ul li a:hover{
     background: none;
 }
+.glyphicon.glyphicon-star {
+    color: yellow;
+    font-size: 40px;
+}
+
+.movie-title {
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 1.2vw;
+}
+p.overview {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 180px;
+}

@@ -10,14 +10,14 @@
                     <li class="nav-item"><a th:href="@{/}" class="nav-link">Movies</a></li>
                     <li class="nav-item"><a th:href="@{/}" class="nav-link">TV Shows</a></li>
                     <li class="nav-item"><a th:href="@{/}" class="nav-link">Actors</a></li>
-                    <li class="nav-item"><a th:href="@{/}" class="nav-link">My List</a></li>
+                    <li th:if="${#authentication.getPrincipal()!='anonymousUser'}" class="nav-item"><a th:href="@{/}" class="nav-link text-warning">My List</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="col-4 col-lg-4 text-lg-right d-none d-lg-block">
             <div th:if="${#authentication.getPrincipal() =='anonymousUser'}">
-                <a th:href="@{/login}" class="btn  btn-sm px-3 btn-warning mr-2">Sign In</a>
+                <a th:href="@{/login}" id="login" class="btn  btn-sm px-3 btn-warning mr-2">Sign In</a>
                 <a th:href="@{/register}" class="btn btn-sm px-3 btn-warning">Sign Up</a>
             </div>
             <div th:if="${#authentication.getPrincipal()!='anonymousUser'}">
