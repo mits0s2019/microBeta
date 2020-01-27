@@ -40,7 +40,7 @@
                 <div class="p-2 d-flex flex-column align-items-center border">
 
                     <div class=" d-flex d-row">
-                        <span class=" glyphicon glyphicon-star"></span><span class="mr-3">{{movie.vote_average}}</span>
+                        <span class=" glyphicon glyphicon-star"></span><span id="vote{{$index}}" class="mr-3">{{movie.vote_average}}</span>
                         <h4 class="p-1 movie-title" id="movieTitle{{$index}}">{{movie.original_title}}</h4>
                     </div>
 

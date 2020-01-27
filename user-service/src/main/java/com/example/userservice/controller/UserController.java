@@ -19,6 +19,7 @@ import java.security.Principal;
 
 //@RolesAllowed({"ROLE_admin"})
 @RestController
+//@CrossOrigin("http://localhost:8090")
 public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);

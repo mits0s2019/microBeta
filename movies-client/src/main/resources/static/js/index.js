@@ -17,33 +17,53 @@ console.log(accessToken);
                 console.log(error);
             });
 
-        // async function init() {
-        //     const japanResponse = await fetch(  );
-        // console.log(japanResponse);
-        //     const japan = await japanResponse.json();
-        //     return japan[0];
-        // }
-        //
-        // init().then((res) => console.log(res));
 
-        let req = {
-            method: 'GET',
-            url: 'http://localhost:8090/user/me',
-            headers: {
-                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization':accessToken
-            },
-
-            // data: { title: 'test',img:'',vote:'',description:'' }
-        };
-        $http(req).then(function(data){console.log(data)}, function(){console.log("error")});
+// if(accessToken!=="") {
+//     let req = {
+//         method: 'GET',
+//         url: 'http://localhost:8090/user/me',
+//         headers: {
+//             'Content-Type': 'application/x-www-form-urlencoded',
+//             'Authorization': accessToken
+//         },
+//         // data: { title: 'test',img:'',vote:'',description:'' }
+//     };
+//     $http(req).then(function (data) {
+//             console.log(data.data)
+//         },
+//         function () {
+//             console.log("Not Logged in user")
+//         });
+// }
 
 
+        $scope.MyListFunction=function(index) {
 
-        $scope.MyListFunction=function(index){
-            console.log(index);
+            let title = document.getElementById('movieTitle' + index).innerHTML;
+            let vote = document.getElementById('vote' + index).innerHTML;
+            let movieOverview = document.getElementById('movieOverview' + index).innerHTML;
+            let movieImg = document.getElementById('movieImg' + index).src;
+
+            if (accessToken !== "") {
+                let req = {
+                    method: 'POST',
+                    url: 'http://localhost:8090/movie/add',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': accessToken
+                    },
+                    data: {title: title, img: movieImg, vote: vote, description: movieOverview}
+                };
+                $http(req).then(function (data) {
+                        console.log(data.data)
+                    },
+                    function () {
+                        console.log("Not Logged in user")
+                    });
+
+            }
         }
-
     })
+
 });
 
