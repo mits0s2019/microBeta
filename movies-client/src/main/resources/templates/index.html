@@ -15,7 +15,7 @@
 </head>
 <body ng-controller="MainCtrl">
 <!--Nanbar-->
-<nav th:insert="navbar::#ftco-navbar"></nav>
+<nav  th:insert="navbar::#ftco-navbar"></nav>
 <!--Search Bar-->
 <div class="d-flex justify-content-center border-bottom " id="search_bar">
     <div class="d-flex w-50 h-100 ">
@@ -28,6 +28,7 @@
 </div>
 <section id="movies-section" class="container ">
     <h2>Popular Movies</h2>
+    <span class="d-none" id="accessToken" th:text="${token}"></span>
     <div class="d-flex flex-wrap" id="movies-container">
 
         <div ng-repeat="movie in movies.results track by $index" id="movieBox{{$index}}"
@@ -48,7 +49,7 @@
                     </div>
 
                     <div class="d-flex d-row mt-auto  justify-content-center align-items-center  ">
-                        <button type="button" id="movieButton{{$index}}"
+                        <button type="button" id="movieButton{{$index}}" ng-click="MyListFunction($index)"
                                 class="glyphicon glyphicon-pushpin btn btn-danger input-block-level"><span class="ml-2  ">My List</span></button>
                     </div>
                 </div>

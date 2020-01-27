@@ -6,10 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.security.RolesAllowed;
+import java.security.Principal;
 
 
 @Controller
@@ -20,7 +22,8 @@ public class WelcomeController {
     RestTemplate restTemplate;
 
     @RequestMapping(value = "/")
-    public String loadUI(){
+    public String loadUI(Model m, Principal principal){
+        if(principal!=null){ m.addAttribute("token",AccessToken.getAccessToken());}
         return "index";
     }
     @RequestMapping(value = "/register")
@@ -32,18 +35,4 @@ public class WelcomeController {
         return "profile";
     }
 
-    @RequestMapping(value = "/accessToken")
-    public ResponseEntity<String> accessToken(){
-        try{
-            String AccessToken= com.example.moviesclient.config.AccessToken.getAccessToken();
-            if (AccessToken!=null){
-                return new ResponseEntity<String>(AccessToken, HttpStatus.OK);
-            }
-            else{
-                return new ResponseEntity<String>("NO Access Token", HttpStatus.BAD_REQUEST);
-            }
-        }catch (Exception e){
-            return new ResponseEntity<String>("NO Access Token", HttpStatus.BAD_REQUEST);
-        }
-    }
 }
