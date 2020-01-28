@@ -21,7 +21,7 @@
                 <a th:href="@{/register}" class="btn btn-sm px-3 btn-warning">Sign Up</a>
             </div>
             <div th:if="${#authentication.getPrincipal()!='anonymousUser'}">
-                <span class="text-white mr-3"><strong class="font-weight-bold">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;<a th:href="@{/}"> <span th:text="${#authentication.getPrincipal()}"></span></a> </strong></span>
+                <span class="text-white mr-3"><strong class="font-weight-bold">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;<a th:href="@{/}"> <span id="username" th:text="${#authentication.getPrincipal()}"></span></a> </strong></span>
                 <a th:href="@{/logout}" class="btn btn-sm px-3 btn-warning">Log out</a>
             </div>
         </div>

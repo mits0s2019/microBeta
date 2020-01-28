@@ -47,10 +47,10 @@
                     <div class="summary">
                         <p class="overview" id="movieOverview{{$index}}">{{movie.overview}}</p>
                     </div>
-
+                    <div class="d-none" id="movieId{{$index}}">{{movie.id}}</div>
                     <div class="d-flex d-row mt-auto  justify-content-center align-items-center  ">
-                        <button type="button" id="movieButton{{$index}}" ng-click="MyListFunction($index)"
-                                class="glyphicon glyphicon-pushpin btn btn-danger input-block-level"><span class="ml-2  ">My List</span></button>
+                        <button type="button" id="movieButton{{$index}}" ng-click="MyListFunction(movie.id,$index)"
+                                class="glyphicon glyphicon-pushpin btn input-block-level btn-danger"><span class="ml-2  ">Add to List</span></button>
                     </div>
                 </div>
             </div>

@@ -11,4 +11,5 @@ public interface MoviesService {
     Movie create(Movie user);
     Optional<Movie> findMovieById(int id);
     void deleteMovieById(int id);
+    Movie findMovieByMovieId(String movieId);
 }

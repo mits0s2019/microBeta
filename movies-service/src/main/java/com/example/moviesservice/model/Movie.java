@@ -13,8 +13,9 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
-    @Column(name = "movie_id")
-    private Integer movieId;
+    @Column(name = "id")
+    private Integer id;
+    private String movieId;
     private String title;
     private String img;
     private String vote;
@@ -24,11 +25,19 @@ public class Movie {
     public Movie() {
     }
 
-    public Integer getMovieId() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(Integer movieId) {
+    public void setMovieId(String movieId) {
         this.movieId = movieId;
     }
 
@@ -62,5 +71,17 @@ public class Movie {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", movieId='" + movieId + '\'' +
+                ", title='" + title + '\'' +
+                ", img='" + img + '\'' +
+                ", vote='" + vote + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
