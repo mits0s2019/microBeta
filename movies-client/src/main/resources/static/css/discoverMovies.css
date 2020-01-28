@@ -27,5 +27,33 @@ p.overview {
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 180px;
+    height: 140px;
+    font-size: 13px;
+}
+.page:hover{
+    color: blue;
+    cursor: pointer;
+}
+.isThisPage{
+    color: black;
+    text-decoration: underline;
+
+}
+.imgSize{
+    height:100%;
+    width:200px;
+}
+.fit_content{
+    width:fit-content;
+    height:fit-content;
+}
+.solid_box{
+    display: inline-block;
+    height:340px;
+    width:280px;
+}
+.solid_box2{
+    display: inline-block;
+    height:100%;
+    width:150px;
 }

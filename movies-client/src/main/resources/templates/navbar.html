@@ -7,13 +7,14 @@
             <div class="d-flex justify-content-center" id="ftco-nav">
                 <ul class="nav navbar-nav ml-auto ">
                     <li class="nav-item "><a th:href="@{/}" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a th:href="@{/}" class="nav-link">Movies</a></li>
+                    <li class="nav-item"><a th:href="@{/discover}" class="nav-link">Movies</a></li>
                     <li class="nav-item"><a th:href="@{/}" class="nav-link">TV Shows</a></li>
                     <li class="nav-item"><a th:href="@{/}" class="nav-link">Actors</a></li>
                     <li th:if="${#authentication.getPrincipal()!='anonymousUser'}" class="nav-item"><a th:href="@{/}" class="nav-link text-warning">My List</a></li>
                 </ul>
             </div>
         </div>
+        <span class="d-none" id="accessToken" th:text="${token}"></span>
 
         <div class="col-4 col-lg-4 text-lg-right d-none d-lg-block">
             <div th:if="${#authentication.getPrincipal() =='anonymousUser'}">

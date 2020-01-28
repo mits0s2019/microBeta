@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      ng-app="App">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-sanitize.js"></script>
+    <link rel="stylesheet" th:href="@{/css/discoverMovies.css}">
+    <title>MyMovies</title>
+</head>
+<body ng-controller="MainCtrl">
+<!--Nanbar-->
+<nav  th:insert="navbar::#ftco-navbar"></nav>
+<!--Search Bar-->
+<div class="d-flex justify-content-center border-bottom " id="search_bar">
+    <div class="d-flex w-50 h-100 ">
+        <form id="search_bar_form" class="d-flex flex-row align-items-center w-100" >
+            <span class="glyphicon glyphicon-search mr-2" id="search_icon"></span>
+            <input type="text" class="w-100 border-0 h-100" placeholder="Search for a movie, tv show...">
+            <input type="submit" class="d-none" disabled>
+        </form>
+    </div>
+</div>
+<section id="movies-section" class="container ">
+    <h2>Popular Movies</h2>
+<!--    PAGES-->
+    <table class="d-flex justify-content-center">
+        <tbody>
+        <tr>
+            <td ng-repeat="x in [].constructor(10) track by $index ">
+                <h4 class="mr-2 page"><a href="http://localhost:8080/MyMovies/discover?page={{$index+1}}"
+                                         ng-class="{isThisPage: ($index+1) == page}">{{$index+1}}</a></h4>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex flex-wrap" id="movies-container">
+
+        <div ng-repeat="movie in movies.results track by $index" id="movieBox{{$index}}"
+             class="m-2 flex-grow-1 w-25 solid_box p-1 d-block">
+            <div class="d-flex fit_content solid_box p-1">
+                <div>
+                <img id="movieImg{{$index}}" class="imgSize" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" >
+                </div>
+                <div class="p-2 d-flex flex-column align-items-center border fit_content solid_box2 ">
+
+                    <div class=" d-flex d-row fit_content">
+                        <span class=" glyphicon glyphicon-star"></span><span id="vote{{$index}}" class="mr-3">{{movie.vote_average}}</span>
+                        <h4 class="p-1 movie-title" id="movieTitle{{$index}}">{{movie.original_title}}</h4>
+                    </div>
+
+                    <div class="summary fit_content d-inline">
+                        <p class="overview" id="movieOverview{{$index}}">{{movie.overview}}</p>
+                    </div>
+                    <div class="d-none" id="movieId{{$index}}">{{movie.id}}</div>
+                    <div class="d-flex d-row mt-auto  justify-content-center align-items-center fit_content inline-block w-100 ">
+                        <button type="button" id="movieButton{{$index}}" ng-click="MyListFunction(movie.id,$index)"
+                                class="glyphicon glyphicon-pushpin btn input-block-level btn-danger w-100"><span class="ml-2  ">Add to List</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    <table class="d-flex justify-content-center">-->
+<!--        <tbody>-->
+<!--        <tr>-->
+<!--            <span id="page" class="d-none" th:text="${page}"></span>-->
+<!--            <td ng-repeat="x in [].constructor(10) track by $index ">-->
+<!--                <h4 class="mr-2 page"><a href="http://localhost:8080/MyMovies/discover?page={{$index+1}}"-->
+<!--                                         ng-class="{isThisPage: ($index+1) == page}">{{$index+1}}</a></h4>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+                <span id="page" class="d-none" th:text="${page}"></span>
+
+</section>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script th:src="@{/js/discoverMovies.js}"></script>
+</body>
+</html>
