@@ -8,6 +8,8 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.security.RolesAllowed;
@@ -33,6 +35,12 @@ public class WelcomeController {
     @RequestMapping(value = "/profile")
     public String profile(){
         return "profile";
+    }
+
+    @RequestMapping(value = "/movie")
+    public String movie(@RequestParam(name="id") String id,Model m){
+        m.addAttribute("movieId",id);
+        return "index";
     }
 
 }
