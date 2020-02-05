@@ -31,9 +31,11 @@
 <!--Search Bar-->
     <div class="d-flex justify-content-center border-bottom " id="search_bar">
         <div class="d-flex w-50 h-100 ">
-            <form id="search_bar_form" class="d-flex flex-row align-items-center w-100" method="GET">
+            <form id="search_bar_form" class="d-flex flex-row align-items-center w-100" method="GET" th:action="@{/search}">
                 <span class="glyphicon glyphicon-search mr-2" id="search_icon"></span>
-                <input id="search-input" type="text" class="w-100 border-0 h-100 autocomplete" placeholder="Search for a movie, tv show...">
+                <input id="search-input" type="text" class="w-100 border-0 h-100 autocomplete" placeholder="Search for a movie, tv show..." >
+                <input id="search-input-id" name="id" type="text" class=" d-none" >
+                <input id="search-input-media-type" type="text" name="media_type" class="d-none">
                 <input id="input-submit" type="submit" class="d-none">
             </form>
         </div>

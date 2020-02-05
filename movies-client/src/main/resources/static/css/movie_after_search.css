@@ -1,0 +1,10 @@
+.movie-container{
+    height: 500px;
+    width: 100%;
+}
+.poster-path{
+    height: 100%;
+}
+.title{
+    color: white;
+}

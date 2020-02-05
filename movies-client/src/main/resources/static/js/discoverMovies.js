@@ -86,8 +86,5 @@ function movieAdded(id,index){
 
 let Button = function(id) {
     this.id = id;
-    // this.innerText = innerText;
-    // this.backgroundColor=backgroundColor;
-    // this.border=border;
     this.clicked=false;
 };

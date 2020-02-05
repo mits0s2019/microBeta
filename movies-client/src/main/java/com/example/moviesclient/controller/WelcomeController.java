@@ -37,10 +37,11 @@ public class WelcomeController {
         return "profile";
     }
 
-    @RequestMapping(value = "/movie")
-    public String movie(@RequestParam(name="id") String id,Model m){
-        m.addAttribute("movieId",id);
-        return "index";
+    @RequestMapping(value = "/search")
+    public String movie(@RequestParam(name="id") String id,@RequestParam(name="media_type") String media_type,Model m){
+        m.addAttribute("id",id);
+        m.addAttribute("mediaType",media_type);
+        return "movie_after_search";
     }
 
 }

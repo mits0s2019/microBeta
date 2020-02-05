@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      ng-app="App" >
+<head >
+    <div th:insert="components/head.html"></div>
+    <title>MyMovies</title>
+    <link rel="stylesheet" th:href="@{/css/discoverMovies.css}">
+    <link rel="stylesheet" th:href="@{/css/movie_after_search.css}">
+    <style ng-controller="MainCtrl">
+        .back-movie{
+            background-image: url("https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}");
+            background-size : cover;
+        rgba(26.27%, 9.41%, 18.43%, 0.98) 0%,rgba(34.12%, 15.69%, 25.49%, 0.88) 100%); width: 100%;
+        }
+        .back-tv{
+            background-image: url("https://image.tmdb.org/t/p/w500{{tv.backdrop_path}}");
+            background-size : cover;
+        rgba(26.27%, 9.41%, 18.43%, 0.98) 0%, rgba(34.12%, 15.69%, 25.49%, 0.88) 100%);width: 100%;
+        }
+    </style>
+</head>
+<body ng-controller="MainCtrl" >
+<!--Nanbar-->
+<nav  th:insert="components/navbar.html"></nav>
+
+<span id="id" class="d-none" th:text="${id}"></span>
+<span id="mediaType" class="d-none" th:text="${mediaType}"></span>
+
+<div  class="container p-3 "  >
+
+    <div class=" movie-container d-flex d-row" >
+        <!--        ng-class="tv.poster_path!==undefined ? 'back-tv' : 'back-movie'"-->
+        <div class="d-flex">
+            <div ng-if="tv.poster_path!==undefined" class="h-100">
+                <img class="poster-path " src="https://image.tmdb.org/t/p/w500{{tv.poster_path}}">
+            </div>
+            <div ng-if="movie.poster_path!==undefined" class="h-100">
+                <img class="poster-path" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+            </div>
+        </div>
+
+        <div class="d-flex">
+
+            <div class="d-flex flex-column p-2">
+                <div>
+                    <div ng-if="tv.poster_path!==undefined" class="d-flex d-row">
+                        <h2 class="">{{tv.original_name}}</h2>
+                        <button type="button" class="btn btn-outline-success btn-sm " ng-repeat="genre in tv.genres" >{{genre.name}}</button>
+                    </div>
+                    <div ng-if="movie.poster_path!==undefined">
+                        <h2 class="">{{movie.original_title}}</h2>
+                        <button type="button" class="btn btn-outline-success btn-sm " ng-repeat="genre in movie.genres" >{{genre.name}}</button>
+                    </div>
+                </div>
+
+                <div class="p-3">
+                    <h4>Overview</h4>
+                    <div ng-if="tv.overview!==undefined">
+                        {{tv.overview}}
+                    </div>
+                    <div ng-if="movie.overview!==undefined">
+                        {{movie.overview}}
+                    </div>
+                </div>
+                <div class="d-flex d-row mt-auto  justify-content-center align-items-center fit_content inline-block w-100 ">
+                    <button type="button"  ng-click="MyListFunction(movie.id,$index)"
+                            class="glyphicon glyphicon-pushpin btn input-block-level btn-danger w-100"><span class="ml-2  ">Add to List</span></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<div th:insert="components/scripts.html" ></div>
+<script th:src="@{/js/page_after_search.js}"></script>
+</body>
+</html>
